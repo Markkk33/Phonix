@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="icon" href="{{ url_for('static', filename='Pictures/phonIX.png') }}" type="image/png">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/Profile.css') }}">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <a href="{{ url_for('dashboard') }}" class="logo">
+                phon<span class="logo-image-wrapper"><img src="{{ url_for('static', filename='Pictures/phonIX.png') }}" alt="Logo" class="logo-image"></span>IX
+            </a>
+            <div class="profile-picture">
+                <img src="{{ url_for('static', filename=profile.profile_picture) if profile and profile.profile_picture else url_for('static', filename='Pictures/blank-profile-picture.png') }}" alt="Profile Picture">
+            </div>
+            <ul class="menu">
+                <li><a href="{{ url_for('profile') }}" class="active">PROFILE</a></li>
+                <li><a href="{{ url_for('dashboard') }}">DASHBOARD</a></li>
+                <li><a href="{{ url_for('products') }}">PRODUCTS</a></li>
+                <li><a href="{{ url_for('orders') }}">ORDERS</a></li>
+                <li><a href="{{ url_for('history') }}">HISTORY</a></li>
+            </ul>
+            <button class="signout">Signout</button>
+        </aside>
+        <div class="profile-content">
+            <header class="profile-header-main">
+                <h1>Profile</h1>
+                <p id="profile-welcome-msg">Welcome, {{ profile.firstname if profile and profile.firstname else 'User' }}</p>
+            </header>
+            <div class="profile-header">
+                <div class="profile-picture">
+                    <img id="profile-picture" src="{{ url_for('static', filename=profile.profile_picture) if profile and profile.profile_picture else url_for('static', filename='Pictures/blank-profile-picture.png') }}" alt="Profile Picture" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+                </div>
+                <div class="profile-info">
+                    <h2 id="profile-fullname">{{ profile.firstname if profile and profile.firstname else 'First Name' }}</h2>
+                    <p id="profile-position">{{ profile.position if profile and profile.position else 'Your Position' }}</p>
+                </div>
+                <button class="edit-profile">
+                    <span class="material-symbols-outlined">edit</span>
+                    Change Profile
+                </button>
+            </div>
+            <div class="profile-info-container">
+                <h3>Personal & Address Information</h3>
+                <div class="detail-group">
+                    <div>
+                        <p>Firstname:</p>
+                        <p id="profile-firstname">{{ profile.firstname if profile and profile.firstname else '(Not set)' }}</p>
+                    </div>
+                    <div>
+                        <p>Lastname:</p>
+                        <p id="profile-lastname">{{ profile.lastname if profile and profile.lastname else '(Not set)' }}</p>
+                    </div>
+                </div>
+                <div class="detail-group">
+                    <div>
+                        <p>Email address:</p>
+                        <p id="profile-email">{{ profile.email if profile and profile.email else '(Not set)' }}</p>
+                    </div>
+                    <div>
+                        <p>Contact Number:</p>
+                        <p id="profile-contact">{{ profile.contact_number if profile and profile.contact_number else '(Not set)' }}</p>
+                    </div>
+                </div>
+                <div class="detail-group">
+                    <div>
+                        <p>Position:</p>
+                        <p id="profile-position-detail">{{ profile.position if profile and profile.position else '(Not set)' }}</p>
+                    </div>
+                    <div>
+                        <p>Street:</p>
+                        <p id="profile-street">{{ profile.street if profile and profile.street else '(Not set)' }}</p>
+                    </div>
+                </div>
+                <div class="detail-group">
+                    <div>
+                        <p>City:</p>
+                        <p id="profile-city">{{ profile.city if profile and profile.city else '(Not set)' }}</p>
+                    </div>
+                    <div>
+                        <p>Province:</p>
+                        <p id="profile-province">{{ profile.province if profile and profile.province else '(Not set)' }}</p>
+                    </div>
+                </div>
+                <button class="edit-profile-info">
+                    <span class="material-symbols-outlined">edit</span>
+                    Edit
+                </button>
+            </div>
+            <div class="profile-details">
+            </div>
+        </div>
+    </div>
+    <div id="profile-picture-popup" class="popup hidden">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3>Change Profile Picture</h3>
+            </div>
+            <div class="popup-body">
+                <div class="profile-picture-preview">
+                    <img src="{{ url_for('static', filename=profile.profile_picture) if profile and profile.profile_picture else url_for('static', filename='Pictures/blank-profile-picture.png') }}" alt="Profile Picture Preview" id="profile-picture-preview">
+                </div>
+                <div class="popup-actions">
+                    <button class="close-button">Cancel</button>
+                    <button class="replace-button">Replace</button>
+                    <button class="save-profile-picture-button">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="edit-profile-info-popup" class="popup hidden">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3>Edit Personal & Address Information</h3>
+            </div>
+            <form id="edit-profile-info-form" class="popup-body">
+                <div class="form-group">
+                    <label for="edit-firstname">Firstname:</label>
+                    <input type="text" id="edit-firstname" name="firstname">
+                </div>
+                <div class="form-group">
+                    <label for="edit-lastname">Lastname:</label>
+                    <input type="text" id="edit-lastname" name="lastname">
+                </div>
+                <div class="form-group">
+                    <label for="edit-email">Email address:</label>
+                    <input type="email" id="edit-email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="edit-contact">Contact Number:</label>
+                    <input type="text" id="edit-contact" name="contact">
+                </div>
+                <div class="form-group">
+                    <label for="edit-position">Position:</label>
+                    <input type="text" id="edit-position" name="position">
+                </div>
+                <div class="form-group">
+                    <label for="edit-street">Street:</label>
+                    <input type="text" id="edit-street" name="street">
+                </div>
+                <div class="form-group">
+                    <label for="edit-city">City:</label>
+                    <input type="text" id="edit-city" name="city">
+                </div>
+                <div class="form-group">
+                    <label for="edit-province">Province:</label>
+                    <input type="text" id="edit-province" name="province">
+                </div>
+                <div class="popup-actions">
+                    <button type="button" class="cancel-edit-profile-info">Cancel</button>
+                    <button type="submit" class="save-edit-profile-info">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="signout-popup" class="popup hidden">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3>Signout</h3>
+            </div>
+            <div class="popup-body">
+                <p>Are you sure you want to sign out?</p>
+            </div>
+            <div class="popup-actions">
+                <button class="signout-confirm">Signout</button>
+                <button class="signout-cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <div id="setup-profile-popup" class="popup hidden">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3>Complete Your Profile</h3>
+                <p class="setup-required-msg" style="color:#F63339;font-size:1rem;margin:0 0 10px 0;display:none;">All fields are required to continue.</p>
+            </div>
+            <form id="setup-profile-form" class="popup-body" enctype="multipart/form-data" autocomplete="off" method="POST" action="{{ url_for('profile') }}">
+                <div class="form-group" style="grid-column: 1 / -1; text-align: center;">
+                    <label for="setup-profile-picture">Profile Picture:</label>
+                    <div class="profile-picture-preview" style="margin-bottom: 10px;">
+                        <img src="{{ url_for('static', filename=profile.profile_picture) if profile and profile.profile_picture else url_for('static', filename='Pictures/blank-profile-picture.png') }}" alt="Profile Picture Preview" id="setup-profile-picture-preview" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover;">
+                    </div>
+                    <input type="file" id="setup-profile-picture" name="profile_picture" accept="image/*">
+                </div>
+                <div class="form-group">
+                    <label for="setup-firstname">Firstname:</label>
+                    <input type="text" id="setup-firstname" name="firstname" required autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="setup-lastname">Lastname:</label>
+                    <input type="text" id="setup-lastname" name="lastname" required autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="setup-email">Email address:</label>
+                    <input type="email" id="setup-email" name="email" required autocomplete="off" value="{{ profile.email if profile and profile.email else '' }}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="setup-contact">Contact Number:</label>
+                    <input type="text" id="setup-contact" name="contact" required autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="setup-position">Position:</label>
+                    <input type="text" id="setup-position" name="position" required autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="setup-street">Street:</label>
+                    <input type="text" id="setup-street" name="street" required autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="setup-city">City:</label>
+                    <input type="text" id="setup-city" name="city" required autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="setup-province">Province:</label>
+                    <input type="text" id="setup-province" name="province" required autocomplete="off">
+                </div>
+                <div class="popup-actions" style="grid-column: 1 / -1;">
+                    <button type="button" class="cancel-setup-profile">Cancel</button>
+                    <button type="submit" class="save-setup-profile">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="setup-profile-notice" class="notice-popup hidden">
+        <div class="notice-content">
+            <div class="notice-header">
+                <span class="material-symbols-outlined" style="font-size:2.2rem;color:#F63339;vertical-align:middle;">error</span>
+                <span style="font-size:1.3rem;font-weight:700;margin-left:8px;vertical-align:middle;">Complete Your Profile</span>
+            </div>
+            <div class="notice-body">
+                <p style="color:#222;font-size:1.08rem;margin:10px 0 18px 0;">To use your account, please complete your profile information.</p>
+                <button class="open-setup-profile" style="background:#1C2336;color:#fff;padding:10px 32px;border:none;border-radius:8px;font-size:1rem;font-weight:700;box-shadow:0 1px 2px rgba(0,0,0,0.04);transition:background 0.2s;cursor:pointer;">Set Up Now</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        // This variable should be set by the backend depending on user profile completeness
+        window.isProfileIncomplete = {{ is_profile_incomplete|tojson }};
+    </script>
+    <script src="{{ url_for('static', filename='JS/Profile.js') }}"></script>
+    <script src="{{ url_for('static', filename='JS/ShowSetupProfilePopup.js') }}"></script>
+</body>
+</html>
