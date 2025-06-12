@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Inventory System</title>
+    <link rel="stylesheet" href="../css/Login.css">
+    <link rel="icon" href="/Pictures/phonIX.png" type="image/png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+</head>
+<body>
+    <div class="login-container">
+        <img src="/Pictures/phonIX.png" alt="PhonIX Logo" class="logo"> 
+        <h1>Welcome to phonIX</h1>
+        <p>Please log in to access your account and manage your inventory efficiently.</p>
+        <form action="../PHP/Login.php" method="post" id="login-form">
+            <div class="input-container">
+                <span class="material-symbols-outlined">person</span>
+                <input type="text" name="username" id="username" placeholder="Username" required>
+            </div>
+            <div class="input-container">
+                <span class="material-symbols-outlined">lock</span>
+                <input type="password" name="password" id="password" placeholder="Password" required>
+                <span class="material-symbols-outlined toggle-password">visibility</span>
+            </div>
+            <button type="submit">Log in</button>
+        </form>
+        <a href="../HMTL/Forgot_Password.html" class="forgot-password">Forgot password?</a>
+        <hr>
+        <a href="../HMTL/signup.html" class="create-account">Create new account</a>
+    </div>
+    <script src="../JS/Login_validation.js"></script>
+</body>
+</html>

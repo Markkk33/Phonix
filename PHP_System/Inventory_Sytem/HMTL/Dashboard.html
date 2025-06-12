@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="icon" href="/Pictures/phonIX.png" type="image/png">
+    <link rel="stylesheet" href="../CSS/Profile.css">
+    <link rel="stylesheet" href="../CSS/Dashboard.css">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <a href="../HMTL/Dashboard.html" class="logo">
+                phon<span class="logo-image-wrapper"><img src="/Pictures/phonIX.png" alt="Logo" class="logo-image"></span>IX
+            </a>
+            <div class="profile-picture">
+                <img src="/Pictures/blank-profile-picture.png" alt="Profile Picture">
+            </div>
+            <ul class="menu">
+                <li><a href="../HMTL/Profile.html">PROFILE</a></li>
+                <li><a href="../HMTL/Dashboard.html" class="active">DASHBOARD</a></li>
+                <li><a href="../HMTL/Products.html">PRODUCTS</a></li>
+                <li><a href="../HMTL/Orders.html">ORDERS</a></li>
+                <li><a href="../HMTL/History.html">HISTORY</a></li>
+            </ul>
+            <button class="signout">Signout</button>
+        </aside>
+        <main class="dashboard-content">
+            <header class="dashboard-header">
+                <div class="dashboard-header-top">
+                    <h1>Dashboard</h1>
+                    <div class="dashboard-profile-shortcut">
+                        <img src="/Pictures/blank-profile-picture.png" alt="Profile Picture" class="profile-mini">
+                        <a href="../HMTL/Profile.html" class="profile-link">Profile/Settings</a>
+                    </div>
+                </div>
+                <p>Welcome back, <span class="dashboard-role">Admin!</span></p>
+            </header>
+            <div class="dashboard-main-section">
+                <div class="dashboard-alerts" id="dashboard-alerts">
+                    <!-- Alerts will be injected here -->
+                </div>
+                <div class="dashboard-actions">
+                    <button class="quick-action" id="add-product-btn">Add Product</button>
+                    <button class="quick-action" id="add-order-btn">Add Order</button>
+                    <button class="quick-action" id="view-low-stock-btn">View Low Stock</button>
+                </div>
+                <section class="dashboard-summary">
+                    <div class="dashboard-card">
+                        <div class="dashboard-card-title">Total Products <span class="material-symbols-outlined">inventory_2</span></div>
+                        <div class="dashboard-card-value" id="dashboard-total-products"></div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="dashboard-card-title">Total Orders <span class="material-symbols-outlined">shopping_cart</span></div>
+                        <div class="dashboard-card-value" id="dashboard-total-orders"></div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="dashboard-card-title">Low Stock Item <span class="material-symbols-outlined">info</span></div>
+                        <div class="dashboard-card-value" id="dashboard-low-stock"></div>
+                    </div>
+                </section>
+                <section class="dashboard-charts">
+                    <div class="chart-container">
+                        <div class="chart-title">Sales Overview (Orders per day)</div>
+                        <canvas id="salesChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <div class="chart-title">Stock Overview (Current Inventory)</div>
+                        <canvas id="stockChart"></canvas>
+                    </div>
+                </section>
+                <section class="dashboard-activity">
+                    <div class="dashboard-activity-header">
+                        <h2>Recent Activity</h2>
+                        <a href="#" class="view-all">View all</a>
+                    </div>
+                    <div class="dashboard-activity-list" id="dashboard-activity-list">
+                        <!-- Activity cards will be dynamically inserted here -->
+                    </div>
+                </section>
+            </div>
+            <footer class="dashboard-footer">
+                <p>&copy; 2025 Inventory Inc.</p>
+            </footer>
+        </main>
+    </div>
+    <!-- View All Activity Popup -->
+    <div id="view-all-activity-popup" class="popup-overlay hidden">
+        <div class="popup-modal">
+            <button class="popup-close close-view-all" title="Close">&times;</button>
+            <h3>All Activities</h3>
+            <div class="dashboard-activity-list" id="dashboard-activity-list-popup">
+                <!-- Activity cards will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+    <div id="signout-popup" class="popup hidden">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3>Signout</h3>
+            </div>
+            <div class="popup-body">
+                <p>Are you sure you want to sign out?</p>
+            </div>
+            <div class="popup-actions">
+                <button class="signout-confirm">Signout</button>
+                <button class="signout-cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../JS/Dashboard.js"></script>
+    <script src="../JS/Profile.js"></script>
+</body>
+</html>

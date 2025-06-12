@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="icon" href="/Pictures/phonIX.png" type="image/png">
+    <link rel="stylesheet" href="../CSS/Profile.css">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <a href="../HMTL/Dashboard.html" class="logo">
+                phon<span class="logo-image-wrapper"><img src="/Pictures/phonIX.png" alt="Logo" class="logo-image"></span>IX
+            </a>
+            <div class="profile-picture">
+                <img src="/Pictures/blank-profile-picture.png" alt="Profile Picture">
+            </div>
+            <ul class="menu">
+                <li><a href="../HMTL/Profile.html" class="active">PROFILE</a></li>
+                <li><a href="../HMTL/Dashboard.html">DASHBOARD</a></li>
+                <li><a href="../HMTL/Products.html">PRODUCTS</a></li>
+                <li><a href="../HMTL/Orders.html">ORDERS</a></li>
+                <li><a href="../HMTL/History.html">HISTORY</a></li>
+            </ul>
+            <button class="signout">Signout</button>
+        </aside>
+        <div class="profile-content">
+            <header class="profile-header-main">
+                <h1>Profile</h1>
+                <p id="profile-welcome-msg">Welcome, User</p>
+            </header>
+            <div class="profile-header">
+                <div class="profile-picture">
+                    <img id="profile-picture" src="/Pictures/blank-profile-picture.png" alt="Profile Picture" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+                </div>
+                <div class="profile-info">
+                    <h2 id="profile-fullname">First Name</h2>
+                    <p id="profile-position">Your Position</p>
+                </div>
+                <button class="edit-profile">
+                    <span class="material-symbols-outlined">edit</span>
+                    Change Profile
+                </button>
+            </div>
+            <div class="profile-info-container">
+                <h3>Personal & Address Information</h3>
+                <div class="detail-group">
+                    <div>
+                        <p>Firstname:</p>
+                        <p id="profile-firstname">(Not set)</p>
+                    </div>
+                    <div>
+                        <p>Lastname:</p>
+                        <p id="profile-lastname">(Not set)</p>
+                    </div>
+                </div>
+                <div class="detail-group">
+                    <div>
+                        <p>Email address:</p>
+                        <p id="profile-email">(Not set)</p>
+                    </div>
+                    <div>
+                        <p>Contact Number:</p>
+                        <p id="profile-contact">(Not set)</p>
+                    </div>
+                </div>
+                <div class="detail-group">
+                    <div>
+                        <p>Position:</p>
+                        <p id="profile-position-detail">(Not set)</p>
+                    </div>
+                    <div>
+                        <p>Street:</p>
+                        <p id="profile-street">(Not set)</p>
+                    </div>
+                </div>
+                <div class="detail-group">
+                    <div>
+                        <p>City:</p>
+                        <p id="profile-city">(Not set)</p>
+                    </div>
+                    <div>
+                        <p>Province:</p>
+                        <p id="profile-province">(Not set)</p>
+                    </div>
+                </div>
+                <button class="edit-profile-info">
+                    <span class="material-symbols-outlined">edit</span>
+                    Edit
+                </button>
+            </div>
+            <div class="profile-details">
+            </div>
+        </div>
+    </div>
+    <div id="profile-picture-popup" class="popup hidden">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3>Change Profile Picture</h3>
+            </div>
+            <div class="popup-body">
+                <div class="profile-picture-preview">
+                    <img src="/Pictures/blank-profile-picture.png" alt="Profile Picture Preview" id="profile-picture-preview">
+                </div>
+                <div class="popup-actions">
+                    <button class="close-button">Cancel</button>
+                    <button class="replace-button">Replace</button>
+                    <button class="save-profile-picture-button">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="edit-profile-info-popup" class="popup hidden">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3>Edit Personal & Address Information</h3>
+            </div>
+            <form id="edit-profile-info-form" class="popup-body">
+                <div class="form-group">
+                    <label for="edit-firstname">Firstname:</label>
+                    <input type="text" id="edit-firstname" name="firstname">
+                </div>
+                <div class="form-group">
+                    <label for="edit-lastname">Lastname:</label>
+                    <input type="text" id="edit-lastname" name="lastname">
+                </div>
+                <div class="form-group">
+                    <label for="edit-email">Email address:</label>
+                    <input type="email" id="edit-email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="edit-contact">Contact Number:</label>
+                    <input type="text" id="edit-contact" name="contact">
+                </div>
+                <div class="form-group">
+                    <label for="edit-position">Position:</label>
+                    <input type="text" id="edit-position" name="position">
+                </div>
+                <div class="form-group">
+                    <label for="edit-street">Street:</label>
+                    <input type="text" id="edit-street" name="street">
+                </div>
+                <div class="form-group">
+                    <label for="edit-city">City:</label>
+                    <input type="text" id="edit-city" name="city">
+                </div>
+                <div class="form-group">
+                    <label for="edit-province">Province:</label>
+                    <input type="text" id="edit-province" name="province">
+                </div>
+                <div class="popup-actions">
+                    <button type="button" class="cancel-edit-profile-info">Cancel</button>
+                    <button type="submit" class="save-edit-profile-info">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="signout-popup" class="popup hidden">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3>Signout</h3>
+            </div>
+            <div class="popup-body">
+                <p>Are you sure you want to sign out?</p>
+            </div>
+            <div class="popup-actions">
+                <button class="signout-confirm">Signout</button>
+                <button class="signout-cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <div id="setup-profile-popup" class="popup hidden">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3>Complete Your Profile</h3>
+                <p class="setup-required-msg" style="color:#F63339;font-size:1rem;margin:0 0 10px 0;display:none;">All fields are required to continue.</p>
+            </div>
+            <form id="setup-profile-form" class="popup-body" enctype="multipart/form-data" autocomplete="off">
+                <div class="form-group" style="grid-column: 1 / -1; text-align: center;">
+                    <label for="setup-profile-picture">Profile Picture:</label>
+                    <div class="profile-picture-preview" style="margin-bottom: 10px;">
+                        <img src="/Pictures/blank-profile-picture.png" alt="Profile Picture Preview" id="setup-profile-picture-preview" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover;">
+                    </div>
+                    <input type="file" id="setup-profile-picture" name="profile_picture" accept="image/*">
+                </div>
+                <div class="form-group">
+                    <label for="setup-firstname">Firstname:</label>
+                    <input type="text" id="setup-firstname" name="firstname" required autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="setup-lastname">Lastname:</label>
+                    <input type="text" id="setup-lastname" name="lastname" required autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="setup-email">Email address:</label>
+                    <input type="email" id="setup-email" name="email" required autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="setup-contact">Contact Number:</label>
+                    <input type="text" id="setup-contact" name="contact" required autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="setup-position">Position:</label>
+                    <input type="text" id="setup-position" name="position" required autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="setup-street">Street:</label>
+                    <input type="text" id="setup-street" name="street" required autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="setup-city">City:</label>
+                    <input type="text" id="setup-city" name="city" required autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="setup-province">Province:</label>
+                    <input type="text" id="setup-province" name="province" required autocomplete="off">
+                </div>
+                <div class="popup-actions" style="grid-column: 1 / -1;">
+                    <button type="button" class="cancel-setup-profile">Cancel</button>
+                    <button type="submit" class="save-setup-profile">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="setup-profile-notice" class="notice-popup hidden">
+        <div class="notice-content">
+            <div class="notice-header">
+                <span class="material-symbols-outlined" style="font-size:2.2rem;color:#F63339;vertical-align:middle;">error</span>
+                <span style="font-size:1.3rem;font-weight:700;margin-left:8px;vertical-align:middle;">Complete Your Profile</span>
+            </div>
+            <div class="notice-body">
+                <p style="color:#222;font-size:1.08rem;margin:10px 0 18px 0;">To use your account, please complete your profile information.</p>
+                <button class="open-setup-profile" style="background:#1C2336;color:#fff;padding:10px 32px;border:none;border-radius:8px;font-size:1rem;font-weight:700;box-shadow:0 1px 2px rgba(0,0,0,0.04);transition:background 0.2s;cursor:pointer;">Set Up Now</button>
+            </div>
+        </div>
+    </div>
+    <script src="../JS/Profile.js"></script>
+    <script src="../JS/ShowSetupProfilePopup.js"></script>
+</body>
+</html>

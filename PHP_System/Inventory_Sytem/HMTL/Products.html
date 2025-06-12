@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="icon" href="/Pictures/phonIX.png" type="image/png">
+    <link rel="stylesheet" href="../CSS/Profile.css">
+    <link rel="stylesheet" href="../CSS/Products.css">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <a href="../HMTL/Dashboard.html" class="logo">
+                phon<span class="logo-image-wrapper"><img src="/Pictures/phonIX.png" alt="Logo" class="logo-image"></span>IX
+            </a>
+            <div class="profile-picture">
+                <img src="/Pictures/blank-profile-picture.png" alt="Profile Picture">
+            </div>
+            <ul class="menu">
+                <li><a href="../HMTL/Profile.html">PROFILE</a></li>
+                <li><a href="../HMTL/Dashboard.html">DASHBOARD</a></li>
+                <li><a href="../HMTL/Products.html" class="active">PRODUCTS</a></li>
+                <li><a href="../HMTL/Orders.html">ORDERS</a></li>
+                <li><a href="../HMTL/History.html">HISTORY</a></li>
+            </ul>
+            <button class="signout">Signout</button>
+        </aside>
+        <div class="profile-content">
+            <header class="products-header-main">
+                <h1>Products</h1>
+                <p>Manage your products and track inventory levels</p>
+            </header>
+            <div class="products-header-bar">
+                <div class="products-header-title">Products Overview</div>
+                <div class="products-header-controls">
+                    <div class="search-bar">
+                        <span class="material-symbols-outlined">search</span>
+                        <input type="text" placeholder="Search products...">
+                    </div>
+                    <button class="add-product-btn">
+                        <span class="material-symbols-outlined">add</span>
+                        Add product
+                    </button>
+                </div>
+            </div>
+            <div class="products-table-container">
+                <table class="products-table">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" id="select-all-products" title="Select All"></th>
+                            <th>Product</th>
+                            <th>Storage</th>
+                            <th>Color</th>
+                            <th>Stock</th>
+                            <th>Price</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Product rows will be dynamically inserted here by JS -->
+                    </tbody>
+                </table>
+                <div class="products-bulk-actions" style="margin: 16px 0; display: flex; gap: 12px; align-items: center;">
+                    <button id="bulk-delete-btn" class="bulk-action-btn" disabled>Delete Selected</button>
+                    <button id="bulk-export-btn" class="bulk-action-btn" disabled>Export Selected</button>
+                </div>
+                <div class="products-footer">
+                    <span>Showing 0 Entities</span>
+                    <div class="pagination">
+                        <button class="active">1</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Add Product Popup -->
+    <div id="add-product-popup" class="popup hidden">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3>Add New Product</h3>
+            </div>
+            <form id="add-product-form" class="popup-body" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="product-name">Product Name:</label>
+                    <input type="text" id="product-name" name="product-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="product-storage">Storage:</label>
+                    <input type="text" id="product-storage" name="product-storage" required>
+                </div>
+                <div class="form-group">
+                    <label for="product-color">Color:</label>
+                    <input type="text" id="product-color" name="product-color" required>
+                </div>
+                <div class="form-group">
+                    <label for="product-stock">Stock:</label>
+                    <input type="number" id="product-stock" name="product-stock" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="product-price">Price:</label>
+                    <input type="number" id="product-price" name="product-price" min="0" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="product-image">Product Image:</label>
+                    <input type="file" id="product-image" name="image" accept="image/*">
+                    <div id="add-product-image-preview" style="margin-top:10px;"></div>
+                </div>
+                <div class="popup-actions">
+                    <button type="button" class="cancel-add-product">Cancel</button>
+                    <button type="submit" class="save-add-product">Add Product</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Edit Product Popup -->
+    <div id="edit-product-popup" class="popup hidden">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3>Edit Product</h3>
+            </div>
+            <form id="edit-product-form" class="popup-body" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="edit-product-name">Product Name:</label>
+                    <input type="text" id="edit-product-name" name="edit-product-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit-product-storage">Storage:</label>
+                    <input type="text" id="edit-product-storage" name="edit-product-storage" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit-product-color">Color:</label>
+                    <input type="text" id="edit-product-color" name="edit-product-color" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit-product-stock">Stock:</label>
+                    <input type="number" id="edit-product-stock" name="edit-product-stock" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit-product-price">Price:</label>
+                    <input type="number" id="edit-product-price" name="edit-product-price" min="0" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit-product-image">Product Image:</label>
+                    <input type="file" id="edit-product-image" name="edit-product-image" accept="image/*">
+                    <div id="edit-product-image-preview" style="margin-top:10px;"></div>
+                </div>
+                <div class="popup-actions">
+                    <button type="button" class="cancel-edit-product">Cancel</button>
+                    <button type="submit" class="save-edit-product">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="../JS/Products.js"></script>
+    <script src="../JS/Profile.js"></script>
+    <!-- Signout Confirmation Popup (styled like the screenshot) -->
+    <div id="signout-popup" class="popup hidden">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3>Signout</h3>
+            </div>
+            <div class="popup-body">
+                <p>Are you sure you want to sign out?</p>
+            </div>
+            <div class="popup-actions">
+                <button class="signout-confirm">Signout</button>
+                <button class="signout-cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

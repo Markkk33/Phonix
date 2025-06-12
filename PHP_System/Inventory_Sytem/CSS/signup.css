@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Recursive:wght@300..1000&display=swap');
+
+/* Global styles */
+* {
+    font-family: 'Recursive', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #96B2DD; /* Updated background color */
+}
+
+/* Error message styles */
+p.error-message {
+    color: rgba(246, 51, 57, 0.96);
+    font-size: 14px;
+}
+
+/* Container styles */
+.signup-container {
+    background-color: white;
+    border-radius: 20px;
+    padding: 50px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 600px;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+    z-index: 1;
+}
+
+/* Header styles */
+.signup-container .header {
+    margin-bottom: 30px;
+}
+
+.signup-container .header img.logo {
+    width: 120px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.signup-container .header h1 {
+    font-size: 28px;
+    color: #297FB0;
+    margin-bottom: 10px;
+}
+
+.signup-container .header p {
+    font-size: 16px;
+    color: black;
+}
+
+/* Form styles */
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    text-align: left;
+}
+
+form .form-group {
+    flex: 1 1 calc(50% - 20px); /* Two columns with spacing */
+    margin-bottom: 20px;
+}
+
+form .form-group label {
+    display: block;
+    font-size: 14px;
+    color: black;
+    margin-bottom: 5px;
+}
+
+form .form-group input {
+    width: 100%; /* Ensure inputs take full width of their column */
+    padding: 10px;
+    border: 2px solid #1C2336;
+    border-radius: 10px;
+    font-size: 14px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #96B2DD; /* Changed input field background color */
+    color: #ffffff; /* Set text color for better contrast */
+}
+
+form .form-group input:focus {
+    border-color: black;
+    box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.2);
+    outline: none;
+}
+
+::placeholder {
+    color: #ffffff; /* Changed placeholder color to white */
+}
+
+/* Button styles */
+.signup-btn {
+    background-color: #1C2336;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.signup-btn:hover {
+    background-color: #297FB0;
+}
+
+/* Footer styles */
+.signup-container .footer {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+.signup-container .footer a {
+    color: #297FB0;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.signup-container .footer a:hover {
+    color: #1C2336;
+}
+
+/* Floating bubbles background */
+.bubbles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+.bubble {
+    position: absolute;
+    bottom: -100px;
+    background: rgb(28,35,54,0.25);
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: floatBubbles 10s linear infinite;
+}
+@keyframes floatBubbles {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.7;
+    }
+    80% {
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(-110vh) scale(1.2);
+        opacity: 0;
+    }
+}
