@@ -1,7 +1,7 @@
 Python Inventory Management System - Instructions
 =========================================================
 
-Thank you for reviewing my Python Inventory Management System. Below are instructions for running and using the system as an instructor:
+Thank you for reviewing my Python Inventory Management System. Below are instructions for running:
 
 1. Requirements
 - Python 3.10 or newer
@@ -32,10 +32,10 @@ Thank you for reviewing my Python Inventory Management System. Below are instruc
 - Product and order management
 - History tracking
 
-4. Instructor Test Accounts
+4. Test Accounts
 
-- You may use the signup page to create a new account, or use any test credentials provided by the student.
-
+- You may use the signup page to create a new account.
+- 
 5. Profile Completion Flow
 
 - If a user profile is incomplete, a custom modal will appear after login.
