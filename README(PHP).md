@@ -1,7 +1,7 @@
 PHP Inventory Management System - Instructions
 =========================================================
 
-Thank you for reviewing my PHP Inventory Management System. Below are instructions for running and using the system as an instructor:
+Thank you for reviewing my PHP Inventory Management System. Below are instructions for running:
 
 1. Requirements
 XAMPP (or any Apache + PHP + MySQL stack)
@@ -44,8 +44,8 @@ Dashboard with summary cards and sales overview
 
 History tracking for activities
 
-4. Instructor Test Accounts
-You may use the signup page to create a new account, or use any test credentials provided by the student.
+4. Test Accounts
+You may use the signup page to create a new account.
 
 5. Profile Completion Flow
 If a user profile is incomplete, a notification will appear after login.
